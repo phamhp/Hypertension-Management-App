@@ -43,9 +43,9 @@ public class UserController {
         userService.save(userForm);
 
         // auto login user after the successfully register the account
-//        securityService.autoLogin(userForm.getUsername(), userForm.getPasswordConfirm());
+        securityService.autoLogin(userForm.getUsername(), userForm.getPasswordConfirm());
 
-        return "redirect:/welcome";
+        return "redirect:/home";
     }
 
     @GetMapping("/login")
