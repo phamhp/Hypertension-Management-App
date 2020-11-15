@@ -1,5 +1,6 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -33,10 +34,15 @@
         </nav>
 
         <div class="grid-container">
-            <div class="grid-item"><a href="/diet_entry">Diet Entry</a></div>
-            <div class="grid-item"><a href="/diet_history">Diet History</a></div>
-            <div class="grid-item"><a href="/exercise_entry">Exercise Entry</a></div>
-            <div class="grid-item"><a href="/exercise_hist">Exercise History</a></div>
+            <c:forEach var="singleEntry" items="${dietEntries}">
+
+                <div class="grid-item ${singleEntry.name}" >
+                    <span>${singleEntry.name} </span>
+                    <span>${singleEntry.category} </span>
+                    <span>${singleEntry.description} </span>
+                </div>
+
+            </c:forEach>
         </div>
 
     </c:if>

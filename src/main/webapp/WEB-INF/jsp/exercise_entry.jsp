@@ -5,7 +5,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>Hypertension Management</title>
+    <title>Hypertension Exercise Entry</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <link href="/resources/css/shared.css" rel="stylesheet">
     <link href="/resources/css/home.css" rel="stylesheet">
@@ -32,12 +32,21 @@
             </div>
         </nav>
 
-        <div class="grid-container">
-            <div class="grid-item"><a href="/diet_entry">Diet Entry</a></div>
-            <div class="grid-item"><a href="/diet_history">Diet History</a></div>
-            <div class="grid-item"><a href="/exercise_entry">Exercise Entry</a></div>
-            <div class="grid-item"><a href="/exercise_hist">Exercise History</a></div>
-        </div>
+        <c:if test="${pageContext.request.userPrincipal.name != null}">
+            <form:form method="POST"></form:form>
+                    <h2>Exercise Entry</h2>
+                    <label for="type">Type (Aerobic or Strength): </label>
+                    <input type="text" id="type" placeholder="Aerobic / Strength"><br>
+
+                    <label for="Duration">Duration of exercise: </label>
+                    <input type="text" id="duration" placeholder="ex: 70 minutes"><br><br>
+
+                    <label for="Notes">Notes</label>
+                    <input type="text" id="notes" placeholder="Ex: running / weights"><br><br>
+
+                    <button class="btn btn-lg btn-primary btn-block" type="submit">Submit</button>
+            </form:form>
+        </c:if>
 
     </c:if>
   </div>

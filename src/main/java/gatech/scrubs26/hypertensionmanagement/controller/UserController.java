@@ -1,6 +1,7 @@
 package gatech.scrubs26.hypertensionmanagement.controller;
 
 import gatech.scrubs26.hypertensionmanagement.model.User;
+import gatech.scrubs26.hypertensionmanagement.service.DietService;
 import gatech.scrubs26.hypertensionmanagement.service.SecurityService;
 import gatech.scrubs26.hypertensionmanagement.service.UserService;
 import gatech.scrubs26.hypertensionmanagement.utils.UserValidator;
@@ -41,8 +42,7 @@ public class UserController {
         }
 
         userService.save(userForm);
-
-        // auto login user after the successfully register the account
+        
         securityService.autoLogin(userForm.getUsername(), userForm.getPasswordConfirm());
 
         return "redirect:/home";

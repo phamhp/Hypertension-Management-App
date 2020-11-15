@@ -5,7 +5,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>Hypertension Management</title>
+    <title>Hypertension Exercise History</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <link href="/resources/css/shared.css" rel="stylesheet">
     <link href="/resources/css/home.css" rel="stylesheet">
@@ -32,12 +32,35 @@
             </div>
         </nav>
 
-        <div class="grid-container">
-            <div class="grid-item"><a href="/diet_entry">Diet Entry</a></div>
-            <div class="grid-item"><a href="/diet_history">Diet History</a></div>
-            <div class="grid-item"><a href="/exercise_entry">Exercise Entry</a></div>
-            <div class="grid-item"><a href="/exercise_hist">Exercise History</a></div>
-        </div>
+        <c:if test="${pageContext.request.userPrincipal.name != null}">
+            <form:form method="POST"></form:form>
+                    <h2>Exercise History</h2>
+                    <label>Last 5 days:</label>
+                    <br>
+
+                    <div class="grid-container">
+                        <div class="grid-item">Day 1</div>
+                        <div class="grid-item">Day 2</div>
+                        <div class="grid-item">Day 3</div>
+                        <div class="grid-item">Day 4</div>
+                        <div class="grid-item">Day 5</div>
+                    </div><br><br>
+
+                    <h2>Last 30 Days Summary</h2>
+
+                    <label>Duration of Aerobic Exercise</label>
+                    <li><a>${pageContext.request.userPrincipal.name}</a></li>
+                    <br>
+
+                    <label>Duration of Strength Exercise</label>
+                    <li><a>${pageContext.request.userPrincipal.name}</a></li>
+                    <br>
+
+                    <label>Current Standing (Great job / Needs improvement in Aerobic exercises / Strength exercises):</label>
+                    <li><a>${pageContext.request.userPrincipal.name}</a></li>
+                    <br>
+            </form:form>
+        </c:if>
 
     </c:if>
   </div>
