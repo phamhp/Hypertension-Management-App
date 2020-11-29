@@ -16,8 +16,8 @@ public class ExerciseServiceImpl implements ExerciseService {
     @Override
     public void save(Exercise exercise) {
         exercise.setType(exercise.getType());
-		exercise.setDuration(exercise.getDuration());
-		exercise.setNotes(exercise.getNotes());
+        exercise.setDuration(exercise.getDuration());
+        exercise.setNotes(exercise.getNotes());
 
         exerciseRepository.save(exercise);
     }
@@ -27,4 +27,3 @@ public class ExerciseServiceImpl implements ExerciseService {
         return exerciseRepository.findByType(type);
     }
 }
-
