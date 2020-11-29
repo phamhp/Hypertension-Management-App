@@ -214,7 +214,7 @@ public class DietController {
             if(value >=20 && value <= 35){
                 _hash.put(key, "You fat intake is good");
             }else if (value > 35){
-                _hash.put(key, "Ooops! Need more fat!");
+                _hash.put(key, "Ooops! Too much fat!");
             }else{
                 _hash.put(key, "Please take some more fat!");
             }
