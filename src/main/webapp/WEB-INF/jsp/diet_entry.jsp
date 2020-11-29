@@ -42,24 +42,39 @@
             <spring:bind path="category">
                 <form:input type="text" path="category" id="type" placeholder="Lunch/Breakfast/Dinner"></form:input>
             </spring:bind>
-            </br>
+        </br>
 
             <label for="name">Name for the food:</label><br>
             <spring:bind path="name">
                 <form:input type="text" path="name" id="name" placeholder="Ex: Cheese Burger"></form:input>
             </spring:bind>
-            </br>
+        </br>
 
+            <label for="fat">Percentage of fat:</label><br>
+            <spring:bind path="fat">
+                <form:input type="number" path="fat" id="fat" placeholder="how many calories"></form:input>
+            </spring:bind>
+        </br>
+            <label for="protein">Percentage of protein:</label><br>
+            <spring:bind path="protein">
+                <form:input type="number" path="protein" id="protein" placeholder="how many calories"></form:input>
+            </spring:bind>
+        </br>
+            <label for="carb">Percentage of carb:</label><br>
+            <spring:bind path="carb">
+                <form:input type="number" path="carb" id="carb" placeholder="how many calories"></form:input>
+            </spring:bind>
+        </br>
             <label for="description">Description:</label><br>
             <spring:bind path="description">
                 <form:input type="text" path="description" id="description" placeholder="how many calories"></form:input>
             </spring:bind>
-            </br>
+        </br>
 
             <button class="btn btn-lg btn-primary btn-block" type="submit">Submit</button>
         </form:form>
     </c:if>
-  </div>
+</div>
 
 </div>
 

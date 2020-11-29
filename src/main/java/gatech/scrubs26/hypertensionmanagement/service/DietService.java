@@ -9,7 +9,12 @@ import java.util.List;
 public interface DietService {
     void save(Diet diet);
 
+    List<Diet> findByUsername(String username);
+
+    List<Diet> findCurrentDietEntries(String username);
+
     List<Diet> findAll();
 }
+
 
 

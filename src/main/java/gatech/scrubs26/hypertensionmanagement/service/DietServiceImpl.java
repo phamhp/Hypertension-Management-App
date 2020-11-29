@@ -18,6 +18,16 @@ public class DietServiceImpl implements DietService{
     }
 
     @Override
+    public List<Diet> findByUsername(String username) {
+        return dietRepository.findByUsername(username);
+    }
+
+    @Override
+    public List<Diet> findCurrentDietEntries(String username) {
+        return dietRepository.findCurrentDietEntries(username);
+    }
+
+    @Override
     public List<Diet> findAll() {
         return dietRepository.findAll();
     }
