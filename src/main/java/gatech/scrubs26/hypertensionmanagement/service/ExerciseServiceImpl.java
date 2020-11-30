@@ -1,29 +1,22 @@
 package gatech.scrubs26.hypertensionmanagement.service;
 
+import gatech.scrubs26.hypertensionmanagement.model.Diet;
 import gatech.scrubs26.hypertensionmanagement.model.Exercise;
-import gatech.scrubs26.hypertensionmanagement.repository.RoleRepository;
 import gatech.scrubs26.hypertensionmanagement.repository.ExerciseRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 
 @Service
 public class ExerciseServiceImpl implements ExerciseService {
     @Autowired
     private ExerciseRepository exerciseRepository;
 
+    @Override
+    public void save(Exercise exercise) {exerciseRepository.save(exercise); }
 
     @Override
-    public void save(Exercise exercise) {
-        exercise.setType(exercise.getType());
-        exercise.setDuration(exercise.getDuration());
-        exercise.setNotes(exercise.getNotes());
+    public List<Exercise> findAll() { return exerciseRepository.findAll(); }
 
-        exerciseRepository.save(exercise);
-    }
-
-    @Override
-    public Exercise findByType(String type) {
-        return exerciseRepository.findByType(type);
-    }
 }

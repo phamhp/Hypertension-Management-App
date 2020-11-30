@@ -1,5 +1,6 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -11,7 +12,7 @@
     <link href="/resources/css/home.css" rel="stylesheet">
 </head>
 <body>
-  <div>
+<div>
     <c:if test="${pageContext.request.userPrincipal.name != null}">
         <nav class="navbar navbar-inverse">
             <div class="container-fluid">
@@ -32,26 +33,33 @@
             </div>
         </nav>
 
-        <c:if test="${pageContext.request.userPrincipal.name != null}">
-            <form:form method="POST"></form:form>
-                    <h2>Exercise Entry</h2>
-                    <label for="type">Type (Aerobic or Strength): </label>
-                    <input type="text" id="type" placeholder="Aerobic / Strength"><br>
+        <form:form method="POST" modelAttribute="exerciseForm">
+            <h2>Exercise Entry</h2>
+            <label for="type">Type:</label><br>
+            <spring:bind path="type">
+                <form:input type="text" path="type" id="type" placeholder="Aerobic / Strength"></form:input>
+            </spring:bind>
+        </br>
 
-                    <label for="Duration">Duration of exercise: </label>
-                    <input type="text" id="duration" placeholder="ex: 70 minutes"><br><br>
+            <label for="duration">Duration of exercise:</label><br>
+            <spring:bind path="duration">
+                <form:input type="text" path="duration" id="duration" placeholder="ex: 25 mins "></form:input>
+            </spring:bind>
+        </br>
 
-                    <label for="Notes">Notes</label>
-                    <input type="text" id="notes" placeholder="Ex: running / weights"><br><br>
+            <label for="notes">Notes:</label><br>
+            <spring:bind path="notes">
+                <form:input type="text" path="notes" id="notes" placeholder="Ex: running / weights"></form:input>
+            </spring:bind>
+        </br>
 
-                    <button class="btn btn-lg btn-primary btn-block" type="submit">Submit</button>
-            </form:form>
-        </c:if>
+            <button class="btn btn-lg btn-primary btn-block" type="submit">Submit</button>
+        </form:form>
 
     </c:if>
-  </div>
+</div>
 
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 </body>
 </html>
