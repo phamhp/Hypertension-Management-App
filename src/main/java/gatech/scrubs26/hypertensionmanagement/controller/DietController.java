@@ -29,6 +29,11 @@ public class DietController {
     @Autowired
     private DietValidator dietValidator;
 
+    private String getCurrentLoggedUser(){
+        org.springframework.security.core.userdetails.User sUser = (org.springframework.security.core.userdetails.User) SecurityContextHolder
+                .getContext().getAuthentication().getPrincipal();
+        return sUser.getUsername();
+    }
 
     @GetMapping("/diet_entry")
     public String diet_entry(Model model) {
@@ -42,8 +47,8 @@ public class DietController {
         if (bindingResult.hasErrors()) {
             return "diet_entry";
         }
-        Date _date = new Date();
         dietForm.setCreatedDate(new Date());
+        dietForm.setUsername(getCurrentLoggedUser());
         dietService.save(dietForm);
         return "redirect:/home";
     }
@@ -54,26 +59,25 @@ public class DietController {
 
         //List<Diet> currentDietEntries = dietService.findAll();
         // Need to implement business logic to evaluate Diet entries
-        List<Diet> currentDietEntries = dietService.findByUsername(request.getParameter("username"));
-        request.setAttribute("dietEntries", currentDietEntries);
-        List<Diet> AllDiets = dietService.findAll();
+        List<Diet> allDiets = dietService.findByUsername(getCurrentLoggedUser());
+        request.setAttribute("dietEntries", allDiets);
 
         //Carb
-        HashMap<Date,Integer> totalHashCarb = getTotalCarb(AllDiets);
+        HashMap<Date,Integer> totalHashCarb = getTotalCarb(allDiets);
         Object[] keys = totalHashCarb.keySet().toArray();
         Arrays.sort(keys);
         request.setAttribute("totalCarbHash", totalHashCarb);
         request.setAttribute("totalDateList", keys);
 
         //Protein
-        HashMap<Date,Integer> totalHashProtein = getTotalProtein(AllDiets);
+        HashMap<Date,Integer> totalHashProtein = getTotalProtein(allDiets);
         keys = totalHashProtein.keySet().toArray();
         Arrays.sort(keys);
         request.setAttribute("totalProteinHash", totalHashProtein);
         request.setAttribute("totalDateList", keys);
 
         //Fat
-        HashMap<Date,Integer> totalHashFat = getTotalFat(AllDiets);
+        HashMap<Date,Integer> totalHashFat = getTotalFat(allDiets);
         keys = totalHashFat.keySet().toArray();
         Arrays.sort(keys);
         request.setAttribute("totalFatHash", totalHashFat);
@@ -214,7 +218,7 @@ public class DietController {
             if(value >=20 && value <= 35){
                 _hash.put(key, "You fat intake is good");
             }else if (value > 35){
-                _hash.put(key, "Ooops! Too much fat!");
+                _hash.put(key, "Ooops! Need more fat!");
             }else{
                 _hash.put(key, "Please take some more fat!");
             }

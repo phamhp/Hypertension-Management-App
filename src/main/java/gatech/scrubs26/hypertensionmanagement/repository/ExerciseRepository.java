@@ -8,5 +8,5 @@ import java.util.List;
 public interface ExerciseRepository extends JpaRepository<Exercise, Long> {
     Exercise findByType(String type);
 
-    List<Exercise> findAll();
+    List<Exercise> findByUsername(String username);
 }

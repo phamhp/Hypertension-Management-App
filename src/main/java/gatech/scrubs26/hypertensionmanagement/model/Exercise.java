@@ -1,6 +1,7 @@
 package gatech.scrubs26.hypertensionmanagement.model;
 
 import javax.persistence.*;
+import java.util.Date;
 import java.util.Set;
 
 @Entity
@@ -12,6 +13,13 @@ public class Exercise {
     private String type;
     private String duration;
     private String notes;
+
+    @Column(name = "username")
+    private String username;
+
+    @Column(updatable = false)
+    @Temporal(TemporalType.DATE)
+    private Date createdDate;
 
     public long getId() {
         return id;
@@ -41,4 +49,19 @@ public class Exercise {
         this.notes = notes;
     }
 
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public Date getCreatedDate() {
+        return createdDate;
+    }
+
+    public void setCreatedDate(Date createdDate) {
+        this.createdDate = createdDate;
+    }
 }

@@ -9,5 +9,5 @@ import java.util.List;
 public interface ExerciseService {
     void save(Exercise exercise);
 
-    List<Exercise> findAll();
+    List<Exercise> findByUsername(String username);
 }

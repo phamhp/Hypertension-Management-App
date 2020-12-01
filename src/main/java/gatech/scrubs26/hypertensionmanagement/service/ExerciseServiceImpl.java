@@ -17,6 +17,6 @@ public class ExerciseServiceImpl implements ExerciseService {
     public void save(Exercise exercise) {exerciseRepository.save(exercise); }
 
     @Override
-    public List<Exercise> findAll() { return exerciseRepository.findAll(); }
+    public List<Exercise> findByUsername(String username) { return exerciseRepository.findByUsername(username); }
 
 }
